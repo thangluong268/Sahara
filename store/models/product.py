@@ -25,3 +25,10 @@ class Product(models.Model):
             return Product.objects.filter(category=category_id)
         else:
             return Product.get_all_products()
+    
+    @staticmethod
+    def get_product_by_id(val):
+        return Product.objects.get(id=val)
+
+    def __str__(self):
+        return self.name

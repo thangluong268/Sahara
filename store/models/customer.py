@@ -22,3 +22,10 @@ class Customer(models.Model):
         if Customer.objects.filter(email=self.email):
             return True
         return False
+    
+    @staticmethod
+    def get_customer_by_id(val):
+        return Customer.objects.get(id=val)
+
+    def __str__(self):
+        return f"{self.last_name} {self.first_name}"

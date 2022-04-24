@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<div class="container">
+    <div class="border rounded p-4 m-4">
+        <p class="display-3 pl-3 ml-3">Report</p>
+        <hr>
+        <table class="table">
+            <tbody>
+            <tr>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <td>{{context.form}}</td>
+                    <button type="submit" class="btn float-right btn-outline-info col-lg-2 mt-1">Search</button>
+
+                </form>
+                <br>
+            </tr>
+            </tbody>
+
+        </table>
+
+        <table class="dataframe">
+            {% if context.orders_df %}
+                <h3>Over View</h3>
+                {{context.orders_df|safe}}
+                <br>
+                <h3>Revenue By Year-Moth</h3>
+                {{context.df|safe}}
+                <br>
+                <h3>Chart</h3>
+                <img src="data:image/png;base64, {{context.chart|safe}}">
+
+            {% else %}
+                <h3>no data</h3>
+            {% endif %}
+
+        </table>
+
+        </hr>
+    </div>
+
+</div>
+
+{% endblock %}

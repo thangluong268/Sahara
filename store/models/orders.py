@@ -20,3 +20,8 @@ class Order(models.Model):
     @staticmethod
     def get_orders_by_customer(customer_id):
         return Order.objects.filter(customer=customer_id).order_by('-date')
+    
+    @staticmethod
+    def get_orders_by_date(date_from, date_to):
+        return Order.objects.filter(date__gte=date_from, date__lte=date_to)
+
