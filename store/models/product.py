@@ -1,9 +1,10 @@
+from functools import total_ordering
 from itertools import product
 from unicodedata import category
 from django.db import models
 from .category import Category
 
-
+@total_ordering
 class Product(models.Model):
     name = models.CharField(max_length=50)
     price = models.IntegerField(default=0)
@@ -32,3 +33,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def __lt__(self, other):
+        return self.name < other.name

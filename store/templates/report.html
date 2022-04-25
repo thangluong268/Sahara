@@ -24,14 +24,14 @@
 
         <table class="dataframe">
             {% if context.orders_df %}
-                <h3>Over View</h3>
-                {{context.orders_df|safe}}
-                <br>
-                <h3>Revenue By Year-Moth</h3>
-                {{context.df|safe}}
-                <br>
                 <h3>Chart</h3>
                 <img src="data:image/png;base64, {{context.chart|safe}}">
+                <br>
+                <h3>Result By Year-Month</h3>
+                {{context.result_df|safe}}
+                <br>
+                <h3>Over View</h3>
+                {{context.orders_df|safe}}
 
             {% else %}
                 <h3>no data</h3>
